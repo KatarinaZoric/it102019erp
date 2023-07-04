@@ -41,17 +41,17 @@ export const ProductService = {
         })
     },
 
-    addProduct: function(name, price, amount, image, category, pplCategories) {
+    addProduct: function(name, price, amount, image, category) {
         return new Promise((resolve, reject) => {
             let requestBody = {
                 Name: name, 
                 Price: price,
                 Amount: amount,
                 Image: image,
-                ProductCategory: category,
-                PplCategories: pplCategories
+                ProductCategory: category
+                // PeopleCategories: peopleCategories
               }
-              let jwt = localStorage.getItem("ButikShopJWT");
+              let jwt = localStorage.getItem("ButikJWT");
             fetch(ApiRoutes.PRODUCT, {
                 method: "POST",
                 headers: {
@@ -69,7 +69,7 @@ export const ProductService = {
         })
     },
 
-    updateProduct: function(id,name, price, amount, image, category, pplCategories) {
+    updateProduct: function(id,name, price, amount, image, category, peopleCategories) {
         return new Promise((resolve, reject) => {
             let requestBody = {
                 Name: name, 
@@ -77,9 +77,9 @@ export const ProductService = {
                 Amount: amount,
                 Image: image,
                 ProductCategory: category,
-                PplCategories: pplCategories
+                PeopleCategories: peopleCategories
               }
-              let jwt = localStorage.getItem("ButikShopJWT");
+              let jwt = localStorage.getItem("ButikJWT");
             fetch(ApiRoutes.PRODUCT + id, {
                 method: "PUT",
                 headers: {
@@ -99,7 +99,7 @@ export const ProductService = {
 
     deleteProduct: function(id) {
         return new Promise((resolve, reject) => {
-            let jwt = localStorage.getItem("ButikShopJWT");
+            let jwt = localStorage.getItem("ButikJWT");
             fetch(ApiRoutes.PRODUCT + id, {
                 method: "DELETE",
                 headers: {

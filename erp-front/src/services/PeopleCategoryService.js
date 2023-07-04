@@ -1,9 +1,9 @@
 import ApiRoutes from "../config/ApiRoutes"
 
-export const PplCategoryService = {
-    getPpls: function() {
+export const PeopleCategoryService = {
+    getPeople: function() {
         return new Promise((resolve, reject) => {
-            fetch(ApiRoutes.PPL_CATEGORY, {
+            fetch(ApiRoutes.PEOPLE_CATEGORY, {
                 method: "GET",
             })
             .then(response => {
@@ -16,4 +16,4 @@ export const PplCategoryService = {
     }
 }
 
-export default PplCategoryService
+export default PeopleCategoryService

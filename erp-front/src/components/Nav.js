@@ -4,22 +4,22 @@ import UserUtility from '../utility/UserUtility'
 import LoginService from '../services/LoginService'
 import {Link, useNavigate} from 'react-router-dom'
 import ProductCategoryService from '../services/ProductCategoryService'
-import PplCategoryService from '../services/PplCategoryService'
+import PeopleCategoryService from '../services/PeopleCategoryService'
 
 function Nav({numberOfCartItems, cartTotalAmount}) {
 
     const[productCategories, setProductCategories] = useState([])
-    const[pplCategories, setPplCategories] = useState([])
+    const[peopleCategories, setPeopleCategories] = useState([])
     const navigate = useNavigate()
 
     useEffect(()=>{
         Promise.all([
           ProductCategoryService.getCategores(),
-          PplCategoryService.getPpls() 
+          PeopleCategoryService.getPeople() 
       ])
-      .then(([productCategories,pplCategories]) => {
+      .then(([productCategories,peopleCategories]) => {
           setProductCategories(productCategories)
-          setPplCategories(pplCategories)
+          setPeopleCategories(peopleCategories)
       })
       .catch(error => {
           console.log(error)
@@ -85,14 +85,14 @@ function Nav({numberOfCartItems, cartTotalAmount}) {
                             })}
                         </ul>
                     </li>
-                    <li className="nav-item dropdown">
+                    {/* <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Za</a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {pplCategories.map(category => {
-                                return <li><a className="dropdown-item" key={"pplCat" + category.pplCategoryID} >{category.name}</a></li>
+                            {peopleCategories.map(category => {
+                                return <li><a className="dropdown-item" key={"peopleCat" + category.peopleCategoryID} >{category.name}</a></li>
                             })}
                         </ul>
-                    </li>
+                    </li> */}
                 </ul>        
                     {loginRegister()}
             </div>

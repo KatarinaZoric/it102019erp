@@ -23,8 +23,8 @@ function Login() {
         LoginService.logIn(email, password)
             .then(response => {
                 if (response.hasOwnProperty("tokenRole") && response.tokenRole !== "") {
-                    localStorage.setItem("ButikShopJWT", response.tokenRole.userToken);
-                    localStorage.setItem("ButikShopRole", response.tokenRole.role);
+                    localStorage.setItem("ButikJWT", response.tokenRole.userToken);
+                    localStorage.setItem("ButikRole", response.tokenRole.role);
                     localStorage.setItem("UserID", response.tokenRole.userId);
                     navigate(ReactRoutes.HOME)
                     window.location.reload()

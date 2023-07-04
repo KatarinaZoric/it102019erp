@@ -27,8 +27,7 @@ namespace ErpPopravni.Controllers
         public IActionResult GetAll()
         {
             var allProducts = _context.Products
-                .Include(p => p.ProductCategory)
-                .Include(p => p.Categories).ToList();
+                .Include(p => p.ProductCategory);
 
             return StatusCode(StatusCodes.Status200OK, allProducts);
         }
@@ -45,7 +44,6 @@ namespace ErpPopravni.Controllers
 
             var products = _context.Products
                 .Include(p => p.ProductCategory)
-                .Include(p => p.Categories)
                 .Where(p => p.ProductCategory.ProductCategoryID == categoryId)
                 .ToList();
 
@@ -63,7 +61,6 @@ namespace ErpPopravni.Controllers
             }
 
             _context.Entry(product).Reference(p => p.ProductCategory).Load();
-            _context.Entry(product).Collection(p => p.Categories).Load();
 
             return StatusCode(StatusCodes.Status200OK, product);
         }
@@ -73,12 +70,8 @@ namespace ErpPopravni.Controllers
         public IActionResult AddProduct(ProductDTO product)
         {
             var productCategory = _context.ProductCategories.Find(product.ProductCategory);
-            var categories = new List<PeopleCategory>();
 
-            foreach (var categoryId in product.Categories)
-            {
-                categories.Add(_context.PeopleCategories.Find(categoryId));
-            }
+           
 
             if (productCategory == null)
             {
@@ -91,7 +84,6 @@ namespace ErpPopravni.Controllers
                 Amount = product.Amount,
                 Price = product.Price,
                 ProductCategory = productCategory,
-                Categories = categories,
                 Image = product.Image
             };
 
@@ -118,19 +110,11 @@ namespace ErpPopravni.Controllers
             }
 
             var productCategory = _context.ProductCategories.Find(product.ProductCategory);
-            var categories = new List<PeopleCategory>();
-
-            foreach (var categoryId in product.Categories)
-            {
-                categories.Add(_context.PeopleCategories.Find(categoryId));
-            }
-
             if (productCategory == null)
             {
                 return StatusCode(StatusCodes.Status400BadRequest);
             }
 
-            _context.Entry(productFromDB).Collection(p => p.Categories).Load();
 
             //var pivotEntries = productFromDB.Categories;
             //productFromDB.Categories.Remove(pivotEntries);
@@ -141,13 +125,8 @@ namespace ErpPopravni.Controllers
             productFromDB.ProductCategory = productCategory;
             productFromDB.Image = product.Image;
 
-            productFromDB.Categories.Clear();
             
-            foreach(var category in categories)
-            {
-                productFromDB.Categories.Add(category);
-            }
-
+           
             _context.Products.Update(productFromDB);
 
             if (_context.SaveChanges() < 1)
@@ -170,7 +149,6 @@ namespace ErpPopravni.Controllers
             }
 
             _context.Entry(product).Reference(p => p.ProductCategory).Load();
-            _context.Entry(product).Collection(p => p.Categories).Load();
 
             _context.Products.Remove(product);
 

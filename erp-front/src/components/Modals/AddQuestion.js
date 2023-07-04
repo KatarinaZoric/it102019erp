@@ -16,9 +16,10 @@ function AddQuestion () {
     }
     return (
         <div>
-             <Button variant="btn btn-outline-dark mt-auto" onClick={handleShow}>
-               Postavi pitanje
+             <Button variant="outline-dark mt-auto" onClick={handleShow}>
+                Postavi pitanje
             </Button>
+
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header >

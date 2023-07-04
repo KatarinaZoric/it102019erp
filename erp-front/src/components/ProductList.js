@@ -3,13 +3,13 @@ import UserUtility from '../utility/UserUtility';
 import Card from './Card'
 import AddProduct from './Modals/AddProduct'
 
-const ProductList = ({products, productCategories, addToCart, pplCategories}) => {
+const ProductList = ({products, productCategories, addToCart, peopleCategories}) => {
 
     const renderAddProduct = () => {
         if(UserUtility.isEmployee())
         {
             return (
-                <AddProduct pplCategories={pplCategories} categories={productCategories}/>
+                <AddProduct peopleCategories={peopleCategories} categories={productCategories}/>
             )
         }
     }
@@ -19,7 +19,7 @@ const ProductList = ({products, productCategories, addToCart, pplCategories}) =>
             <div className="container px-4 px-lg-5">
                 <div className="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     {products.map(product => {
-                     return <Card key={product.id} product={product} categories={productCategories} pplCategories={pplCategories} addToCart={addToCart} />
+                     return <Card key={product.id} product={product} categories={productCategories} peopleCategories={peopleCategories} addToCart={addToCart} />
                     })}
                 </div>
             </div>

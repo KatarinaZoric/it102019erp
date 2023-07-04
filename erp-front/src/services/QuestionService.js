@@ -12,7 +12,6 @@ export const QuestionService = {
             })
             .then(data => resolve(data))
             .catch(error => reject(error))
-
         })
     },
 

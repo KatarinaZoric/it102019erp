@@ -5,7 +5,7 @@ import DeleteProduct from './Modals/DeleteProduct'
 import {Link} from 'react-router-dom'
 import ReactRoutes from '../config/ReactRoutes'
 
-const Card = ({product, categories, addToCart, pplCategories}) =>{
+const Card = ({product, categories, addToCart, peopleCategories}) =>{
 
     const [numberToAdd, setNumberToAdd] = useState(1)
 
@@ -19,7 +19,7 @@ const Card = ({product, categories, addToCart, pplCategories}) =>{
         if(UserUtility.isEmployee()){
             return (
                 <div> 
-                    <UpdateProduct pplCategories={pplCategories} product={product}
+                    <UpdateProduct peopleCategories={peopleCategories} product={product}
                     categories={categories}/>
                     <DeleteProduct product={product} />
                 </div>

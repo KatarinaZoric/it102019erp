@@ -5,7 +5,7 @@ ApiRoutes.BASE_URL = "https://localhost:44307/"
 ApiRoutes.LOGIN = ApiRoutes.BASE_URL + "login"
 ApiRoutes.REGISTER = ApiRoutes.BASE_URL + "register"
 
-ApiRoutes.PPL_CATEGORY = ApiRoutes.BASE_URL + "Category/"
+ApiRoutes.PEOPLE_CATEGORY = ApiRoutes.BASE_URL + "PeopleCategory/"
 
 ApiRoutes.PRODUCT_CATEGORY = ApiRoutes.BASE_URL + "ProductCategory/"
 

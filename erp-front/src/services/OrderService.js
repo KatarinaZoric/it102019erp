@@ -3,7 +3,7 @@ import ApiRoutes from "../config/ApiRoutes"
 export const OrderService = {
     getAllOrders: () => {
         return new Promise((resolve, reject) => {
-            let jwt = localStorage.getItem("ButikShopJWT");
+            let jwt = localStorage.getItem("ButikJWT");
 
             fetch(ApiRoutes.ORDER, {
                 headers: {
@@ -23,7 +23,7 @@ export const OrderService = {
 
     getAllOrdersForUser: (userId) => {
         return new Promise((resolve, reject) => {
-            let jwt = localStorage.getItem("ButikShopJWT");
+            let jwt = localStorage.getItem("ButikJWT");
 
             fetch(ApiRoutes.ORDER + ApiRoutes.ORDER_BY_USER + userId, {
                 headers: {
@@ -43,7 +43,7 @@ export const OrderService = {
 
     deleteOrder: (orderId) => {
         return new Promise((resolve, reject) => {
-            let jwt = localStorage.getItem("ButikShopJWT");
+            let jwt = localStorage.getItem("ButikJWT");
 
             fetch(ApiRoutes.ORDER + orderId, {
                 headers: {
@@ -74,7 +74,8 @@ export const OrderService = {
                 })
             })
 
-            let jwt = localStorage.getItem("PetShopJWT");
+            let jwt = localStorage.getItem("ButikJWT");
+            console.log(jwt)
 
             fetch(ApiRoutes.ORDER, {
                 headers: {

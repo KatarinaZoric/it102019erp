@@ -1,11 +1,11 @@
 export const UserUtility = {
     isLoggedIn: function() {
-        let jwt = localStorage.getItem('ButikShopJWT');
+        let jwt = localStorage.getItem('ButikJWT');
         return jwt !== null && jwt !== '';
     },
 
     isEmployee: function() {
-        let role = localStorage.getItem("ButikShopRole");
+        let role = localStorage.getItem("ButikRole");
         return role === "Employee" 
     }
 }
