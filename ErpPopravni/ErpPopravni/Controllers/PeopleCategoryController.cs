@@ -12,11 +12,11 @@ namespace ErpPopravni.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class PeopleCategoryController : ControllerBase
     {
         private readonly ButikContext _context;
 
-        public CategoryController(ButikContext context)
+        public PeopleCategoryController(ButikContext context)
         {
             _context = context;
         }
@@ -24,15 +24,15 @@ namespace ErpPopravni.Controllers
         [HttpGet("")]
         public IActionResult GetAll()
         {
-            var cats = _context.Categories.ToList();
+            var cats = _context.PeopleCategories.ToList();
             return StatusCode(StatusCodes.Status200OK, cats);
         }
 
         [HttpPost("/category")]
         [Authorize(Roles = "Employee")]
-        public Category AddCategory(Category cat)
+        public PeopleCategory AddCategory(PeopleCategory cat)
         {
-            _context.Categories.Add(cat);
+            _context.PeopleCategories.Add(cat);
             _context.SaveChanges();
 
             return cat;
@@ -40,9 +40,9 @@ namespace ErpPopravni.Controllers
 
         [HttpPut("/category")]
         [Authorize(Roles = "Employee")]
-        public Category UpdateCategory(Category cat)
+        public PeopleCategory UpdateCategory(PeopleCategory cat)
         {
-            _context.Categories.Update(cat);
+            _context.PeopleCategories.Update(cat);
             _context.SaveChanges();
 
             return cat;
@@ -50,10 +50,10 @@ namespace ErpPopravni.Controllers
 
         [HttpDelete("/category/{id}")]
         [Authorize(Roles = "Employee")]
-        public Category DeleteCategory(int id)
+        public PeopleCategory DeleteCategory(int id)
         {
-            Category catForDelete = _context.Categories.Find(id);
-            _context.Categories.Remove(catForDelete);
+            PeopleCategory catForDelete = _context.PeopleCategories.Find(id);
+            _context.PeopleCategories.Remove(catForDelete);
             _context.SaveChanges();
 
             return catForDelete;

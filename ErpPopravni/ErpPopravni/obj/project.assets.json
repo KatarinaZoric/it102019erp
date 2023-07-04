@@ -4058,34 +4058,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Kaja\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\mmaksimovic\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kaja\\Desktop\\ERPKAJA\\ErpPopravni\\ErpPopravni\\ErpPopravni.csproj",
+      "projectUniqueName": "C:\\Users\\mmaksimovic\\Desktop\\ERP\\it102019erp\\ErpPopravni\\ErpPopravni\\ErpPopravni.csproj",
       "projectName": "ErpPopravni",
-      "projectPath": "C:\\Users\\Kaja\\Desktop\\ERPKAJA\\ErpPopravni\\ErpPopravni\\ErpPopravni.csproj",
-      "packagesPath": "C:\\Users\\Kaja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kaja\\Desktop\\ERPKAJA\\ErpPopravni\\ErpPopravni\\obj\\",
+      "projectPath": "C:\\Users\\mmaksimovic\\Desktop\\ERP\\it102019erp\\ErpPopravni\\ErpPopravni\\ErpPopravni.csproj",
+      "packagesPath": "C:\\Users\\mmaksimovic\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mmaksimovic\\Desktop\\ERP\\it102019erp\\ErpPopravni\\ErpPopravni\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Kaja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mmaksimovic\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "C:\\Program Files\\dotnet\\sdk\\7.0.305\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },

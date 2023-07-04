@@ -12,16 +12,16 @@ namespace ErpPopravni.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "PeopleCategories",
                 columns: table => new
                 {
-                    CategoryID = table.Column<int>(type: "int", nullable: false)
+                    PeopleCategoryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
+                    table.PrimaryKey("PK_PeopleCategories", x => x.PeopleCategoryID);
                 });
 
             migrationBuilder.CreateTable(
@@ -117,25 +117,26 @@ namespace ErpPopravni.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CategoryProduct",
+                name: "PeopleCategoryProduct",
                 columns: table => new
                 {
-                    CategoriesCategoryID = table.Column<int>(type: "int", nullable: false),
+                    CategoriesPeopleCategoryID = table.Column<int>(type: "int", nullable: false),
                     ProductsProductID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryProduct", x => new { x.CategoriesCategoryID, x.ProductsProductID });
+                    table.PrimaryKey("PK_PeopleCategoryProduct", x => new { x.CategoriesPeopleCategoryID, x.ProductsProductID });
                     table.ForeignKey(
-                        name: "FK_CategoryProduct_Categories_CategoriesCategoryID",
-                        column: x => x.CategoriesCategoryID,
-                        principalTable: "Categories",
-                        principalColumn: "CategoryID");
+                        name: "FK_PeopleCategoryProduct_PeopleCategories_CategoriesPeopleCategoryID",
+                        column: x => x.CategoriesPeopleCategoryID,
+                        principalTable: "PeopleCategories",
+                        principalColumn: "PeopleCategoryID");
                     table.ForeignKey(
-                        name: "FK_CategoryProduct_Products_ProductsProductID",
+                        name: "FK_PeopleCategoryProduct_Products_ProductsProductID",
                         column: x => x.ProductsProductID,
                         principalTable: "Products",
-                        principalColumn: "ProductID");
+                        principalColumn: "ProductID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,11 +219,6 @@ namespace ErpPopravni.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoryProduct_ProductsProductID",
-                table: "CategoryProduct",
-                column: "ProductsProductID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Messages_QuestionID",
                 table: "Messages",
                 column: "QuestionID");
@@ -246,6 +242,11 @@ namespace ErpPopravni.Migrations
                 name: "IX_Orders_UserID",
                 table: "Orders",
                 column: "UserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PeopleCategoryProduct_ProductsProductID",
+                table: "PeopleCategoryProduct",
+                column: "ProductsProductID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Products_ProductCategoryID",
@@ -272,25 +273,25 @@ namespace ErpPopravni.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CategoryProduct");
-
-            migrationBuilder.DropTable(
                 name: "Messages");
 
             migrationBuilder.DropTable(
                 name: "OrderItems");
 
             migrationBuilder.DropTable(
-                name: "Reviews");
+                name: "PeopleCategoryProduct");
 
             migrationBuilder.DropTable(
-                name: "Categories");
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "Questions");
 
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "PeopleCategories");
 
             migrationBuilder.DropTable(
                 name: "Products");

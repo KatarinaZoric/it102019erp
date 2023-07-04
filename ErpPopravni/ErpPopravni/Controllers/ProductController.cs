@@ -73,11 +73,11 @@ namespace ErpPopravni.Controllers
         public IActionResult AddProduct(ProductDTO product)
         {
             var productCategory = _context.ProductCategories.Find(product.ProductCategory);
-            var categories = new List<Category>();
+            var categories = new List<PeopleCategory>();
 
             foreach (var categoryId in product.Categories)
             {
-                categories.Add(_context.Categories.Find(categoryId));
+                categories.Add(_context.PeopleCategories.Find(categoryId));
             }
 
             if (productCategory == null)
@@ -118,11 +118,11 @@ namespace ErpPopravni.Controllers
             }
 
             var productCategory = _context.ProductCategories.Find(product.ProductCategory);
-            var categories = new List<Category>();
+            var categories = new List<PeopleCategory>();
 
             foreach (var categoryId in product.Categories)
             {
-                categories.Add(_context.Categories.Find(categoryId));
+                categories.Add(_context.PeopleCategories.Find(categoryId));
             }
 
             if (productCategory == null)

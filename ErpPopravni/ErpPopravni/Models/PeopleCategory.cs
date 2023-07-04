@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ErpPopravni.Models
 {
-    public class Category
+    public class PeopleCategory
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int CategoryID { get; set; }
+        public int PeopleCategoryID { get; set; }
         [Required]
         public string Name { get; set; }
         [JsonIgnore]

@@ -22,38 +22,6 @@ namespace ErpPopravni.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CategoryProduct", b =>
-                {
-                    b.Property<int>("CategoriesCategoryID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsProductID")
-                        .HasColumnType("int");
-
-                    b.HasKey("CategoriesCategoryID", "ProductsProductID");
-
-                    b.HasIndex("ProductsProductID");
-
-                    b.ToTable("CategoryProduct");
-                });
-
-            modelBuilder.Entity("ErpPopravni.Models.Category", b =>
-                {
-                    b.Property<int>("CategoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryID"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CategoryID");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("ErpPopravni.Models.Message", b =>
                 {
                     b.Property<int>("MessageID")
@@ -135,6 +103,23 @@ namespace ErpPopravni.Migrations
                     b.HasIndex("ProductID");
 
                     b.ToTable("OrderItems");
+                });
+
+            modelBuilder.Entity("ErpPopravni.Models.PeopleCategory", b =>
+                {
+                    b.Property<int>("PeopleCategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PeopleCategoryID"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PeopleCategoryID");
+
+                    b.ToTable("PeopleCategories");
                 });
 
             modelBuilder.Entity("ErpPopravni.Models.Product", b =>
@@ -276,19 +261,19 @@ namespace ErpPopravni.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("CategoryProduct", b =>
+            modelBuilder.Entity("PeopleCategoryProduct", b =>
                 {
-                    b.HasOne("ErpPopravni.Models.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesCategoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("CategoriesPeopleCategoryID")
+                        .HasColumnType("int");
 
-                    b.HasOne("ErpPopravni.Models.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("ProductsProductID")
+                        .HasColumnType("int");
+
+                    b.HasKey("CategoriesPeopleCategoryID", "ProductsProductID");
+
+                    b.HasIndex("ProductsProductID");
+
+                    b.ToTable("PeopleCategoryProduct");
                 });
 
             modelBuilder.Entity("ErpPopravni.Models.Message", b =>
@@ -379,6 +364,21 @@ namespace ErpPopravni.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PeopleCategoryProduct", b =>
+                {
+                    b.HasOne("ErpPopravni.Models.PeopleCategory", null)
+                        .WithMany()
+                        .HasForeignKey("CategoriesPeopleCategoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ErpPopravni.Models.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsProductID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ErpPopravni.Models.Order", b =>

@@ -44,7 +44,7 @@ namespace ErpPopravni.Services
 
             claims.Add(new Claim(ClaimTypes.Role, role));
 
-            var token = new JwtSecurityToken("PetShop", null, claims, DateTime.Now, DateTime.Now.AddHours(2), signingCredentials);
+            var token = new JwtSecurityToken("Butik", null, claims, DateTime.Now, DateTime.Now.AddHours(2), signingCredentials);
 
             LoginResponseDTO response = new LoginResponseDTO();
             response.userToken = tokenHandler.WriteToken(token);

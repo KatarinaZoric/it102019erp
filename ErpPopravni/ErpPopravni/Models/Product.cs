@@ -23,7 +23,7 @@ namespace ErpPopravni.Models
         [ForeignKey("ProductCategoryID")]
         public ProductCategory ProductCategory { get; set; }
 
-        public IList<Category> Categories { get; set; }
+        public IList<PeopleCategory> Categories { get; set; }
         [JsonIgnore]
         public IList<Review> Reviews { get; set; }
     }
