@@ -28,7 +28,7 @@ namespace ErpPopravni.Controllers
         {
             var allProducts = _context.Products
                 .Include(p => p.ProductCategory)
-                .Include(p => p.Categories).ToList();
+                .Include(p => p.PeopleCategories).ToList();
 
             return StatusCode(StatusCodes.Status200OK, allProducts);
         }
@@ -45,7 +45,7 @@ namespace ErpPopravni.Controllers
 
             var products = _context.Products
                 .Include(p => p.ProductCategory)
-                .Include(p => p.Categories)
+                .Include(p => p.PeopleCategories)
                 .Where(p => p.ProductCategory.ProductCategoryID == categoryId)
                 .ToList();
 
@@ -63,7 +63,7 @@ namespace ErpPopravni.Controllers
             }
 
             _context.Entry(product).Reference(p => p.ProductCategory).Load();
-            _context.Entry(product).Collection(p => p.Categories).Load();
+            _context.Entry(product).Collection(p => p.PeopleCategories).Load();
 
             return StatusCode(StatusCodes.Status200OK, product);
         }
@@ -73,11 +73,11 @@ namespace ErpPopravni.Controllers
         public IActionResult AddProduct(ProductDTO product)
         {
             var productCategory = _context.ProductCategories.Find(product.ProductCategory);
-            var categories = new List<PeopleCategory>();
+            var peopleCategories = new List<PeopleCategory>();
 
-            foreach (var categoryId in product.Categories)
+            foreach (var categoryId in product.PeopleCategories)
             {
-                categories.Add(_context.PeopleCategories.Find(categoryId));
+                peopleCategories.Add(_context.PeopleCategories.Find(categoryId));
             }
 
 
@@ -92,7 +92,7 @@ namespace ErpPopravni.Controllers
                 Amount = product.Amount,
                 Price = product.Price,
                 ProductCategory = productCategory,
-                Categories = categories,
+                PeopleCategories = peopleCategories,
                 Image = product.Image
             };
 
@@ -119,11 +119,11 @@ namespace ErpPopravni.Controllers
             }
 
             var productCategory = _context.ProductCategories.Find(product.ProductCategory);
-            var categories = new List<PeopleCategory>();
+            var peopleCategories = new List<PeopleCategory>();
 
-            foreach (var categoryId in product.Categories)
+            foreach (var categoryId in product.PeopleCategories)
             {
-                categories.Add(_context.PeopleCategories.Find(categoryId));
+                peopleCategories.Add(_context.PeopleCategories.Find(categoryId));
             }
 
             if (productCategory == null)
@@ -131,7 +131,7 @@ namespace ErpPopravni.Controllers
                 return StatusCode(StatusCodes.Status400BadRequest);
             }
 
-            _context.Entry(productFromDB).Collection(p => p.Categories).Load();
+            _context.Entry(productFromDB).Collection(p => p.PeopleCategories).Load();
 
             //var pivotEntries = productFromDB.Categories;
             //productFromDB.Categories.Remove(pivotEntries);
@@ -142,11 +142,11 @@ namespace ErpPopravni.Controllers
             productFromDB.ProductCategory = productCategory;
             productFromDB.Image = product.Image;
 
-            productFromDB.Categories.Clear();
+            productFromDB.PeopleCategories.Clear();
             
-            foreach(var category in categories)
+            foreach(var category in peopleCategories)
             {
-                productFromDB.Categories.Add(category);
+                productFromDB.PeopleCategories.Add(category);
             }
 
             _context.Products.Update(productFromDB);
@@ -171,7 +171,7 @@ namespace ErpPopravni.Controllers
             }
 
             _context.Entry(product).Reference(p => p.ProductCategory).Load();
-            _context.Entry(product).Collection(p => p.Categories).Load();
+            _context.Entry(product).Collection(p => p.PeopleCategories).Load();
 
             _context.Products.Remove(product);
 

@@ -12,7 +12,6 @@ namespace ErpPopravni.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
         [Required]
-        [ForeignKey("UserID")]
         public User User { get; set; }
         [Required]
         public DateTime Date { get; set; }

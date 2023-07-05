@@ -18,11 +18,9 @@ namespace ErpPopravni.Models
         public DateTime Date { get; set; }
         [Required, JsonIgnore]
 
-        [ForeignKey("QuestionID")]
         public Question Question { get; set; }
 
         [Required]
-        [ForeignKey("UserID")]
         public User User { get; set; }
     }
 }

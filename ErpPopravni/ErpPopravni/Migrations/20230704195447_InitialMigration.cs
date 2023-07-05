@@ -74,7 +74,8 @@ namespace ErpPopravni.Migrations
                         name: "FK_Products_ProductCategories_ProductCategoryID",
                         column: x => x.ProductCategoryID,
                         principalTable: "ProductCategories",
-                        principalColumn: "ProductCategoryID");
+                        principalColumn: "ProductCategoryID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -94,7 +95,8 @@ namespace ErpPopravni.Migrations
                         name: "FK_Orders_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
-                        principalColumn: "UserID");
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -113,7 +115,8 @@ namespace ErpPopravni.Migrations
                         name: "FK_Questions_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
-                        principalColumn: "UserID");
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -130,7 +133,8 @@ namespace ErpPopravni.Migrations
                         name: "FK_PeopleCategoryProduct_PeopleCategories_CategoriesPeopleCategoryID",
                         column: x => x.CategoriesPeopleCategoryID,
                         principalTable: "PeopleCategories",
-                        principalColumn: "PeopleCategoryID");
+                        principalColumn: "PeopleCategoryID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PeopleCategoryProduct_Products_ProductsProductID",
                         column: x => x.ProductsProductID,
@@ -158,12 +162,14 @@ namespace ErpPopravni.Migrations
                         name: "FK_Reviews_Products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "Products",
-                        principalColumn: "ProductID");
+                        principalColumn: "ProductID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Reviews_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
-                        principalColumn: "UserID");
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -184,12 +190,14 @@ namespace ErpPopravni.Migrations
                         name: "FK_OrderItems_Orders_OrderID",
                         column: x => x.OrderID,
                         principalTable: "Orders",
-                        principalColumn: "OrderID");
+                        principalColumn: "OrderID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_OrderItems_Products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "Products",
-                        principalColumn: "ProductID");
+                        principalColumn: "ProductID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -210,12 +218,14 @@ namespace ErpPopravni.Migrations
                         name: "FK_Messages_Questions_QuestionID",
                         column: x => x.QuestionID,
                         principalTable: "Questions",
-                        principalColumn: "QuestionID");
+                        principalColumn: "QuestionID",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Messages_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
-                        principalColumn: "UserID");
+                        principalColumn: "UserID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

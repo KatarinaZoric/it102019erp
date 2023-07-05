@@ -20,10 +20,9 @@ namespace ErpPopravni.Models
         public int Amount { get; set; }
         public string? Image { get; set; }
         [Required]
-        [ForeignKey("ProductCategoryID")]
         public ProductCategory ProductCategory { get; set; }
 
-        public IList<PeopleCategory> Categories { get; set; }
+        public IList<PeopleCategory> PeopleCategories { get; set; }
         [JsonIgnore]
         public IList<Review> Reviews { get; set; }
     }

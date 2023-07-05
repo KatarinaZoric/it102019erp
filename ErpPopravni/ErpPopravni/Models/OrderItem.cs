@@ -15,10 +15,8 @@ namespace ErpPopravni.Models
             [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
             public int OrderItemID { get; set; }
             [Required, JsonIgnore]
-        [ForeignKey("OrderID")]
         public Order Order { get; set; }
             [Required]
-        [ForeignKey("ProductID")]
         public Product Product { get; set; }
             [Required]
             public decimal Price { get; set; }

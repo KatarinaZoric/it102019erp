@@ -12,6 +12,6 @@ namespace ErpPopravni.Models.DTO
         public int Amount { get; set; }
         public string? Image { get; set; }
         public int ProductCategory { get; set; }
-        public int[] Categories { get; set; }
+        public int[] PeopleCategories { get; set; }
     }
 }

@@ -24,39 +24,39 @@ namespace ErpPopravni.Controllers
         [HttpGet("")]
         public IActionResult GetAll()
         {
-            var cats = _context.PeopleCategories.ToList();
-            return StatusCode(StatusCodes.Status200OK, cats);
+            var people = _context.PeopleCategories.ToList();
+            return StatusCode(StatusCodes.Status200OK, people);
         }
 
-        [HttpPost("/category")]
+        [HttpPost("/peopleCategory")]
         [Authorize(Roles = "Employee")]
-        public PeopleCategory AddCategory(PeopleCategory cat)
+        public PeopleCategory AddPeopleCategory(PeopleCategory people)
         {
-            _context.PeopleCategories.Add(cat);
+            _context.PeopleCategories.Add(people);
             _context.SaveChanges();
 
-            return cat;
+            return people;
         }
 
-        [HttpPut("/category")]
+        [HttpPut("/peopleCategory")]
         [Authorize(Roles = "Employee")]
-        public PeopleCategory UpdateCategory(PeopleCategory cat)
+        public PeopleCategory UpdatePeopleCategory(PeopleCategory people)
         {
-            _context.PeopleCategories.Update(cat);
+            _context.PeopleCategories.Update(people);
             _context.SaveChanges();
 
-            return cat;
+            return people;
         }
 
-        [HttpDelete("/category/{id}")]
+        [HttpDelete("/peopleCategory/{id}")]
         [Authorize(Roles = "Employee")]
-        public PeopleCategory DeleteCategory(int id)
+        public PeopleCategory DeletePeopleCategory(int id)
         {
-            PeopleCategory catForDelete = _context.PeopleCategories.Find(id);
-            _context.PeopleCategories.Remove(catForDelete);
+            PeopleCategory peopleForDelete = _context.PeopleCategories.Find(id);
+            _context.PeopleCategories.Remove(peopleForDelete);
             _context.SaveChanges();
 
-            return catForDelete;
+            return peopleForDelete;
         }
     }
 }

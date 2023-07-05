@@ -17,11 +17,9 @@ namespace ErpPopravni.Models
         [Required]
         public string Comment { get; set; }
         [Required]
-        [ForeignKey("UserID")]
         public User User { get; set; }
         [Required]
         [JsonIgnore]
-        [ForeignKey("ProductID")]
         public Product Product { get; set; }
         [Required]
         public DateTime Date { get; set; }

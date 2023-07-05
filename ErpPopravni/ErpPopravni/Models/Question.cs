@@ -14,7 +14,6 @@ namespace ErpPopravni.Models
         [Required]
         public string Theme { get; set; }
         [Required]
-        [ForeignKey("UserID")]
         public User User { get; set; }
         public IList<Message> Messages { get; set; }
     }
