@@ -16,7 +16,7 @@ function AddProduct(props) {
   const [amount, setAmount] = useState(0);
   const [image, setImage] = useState(null);
   const [category, setCategory] = useState(null);
-//   const [peopleCategories, setPeopleCategories] = useState([]);
+  const [peopleCategories, setPeopleCategories] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -29,8 +29,8 @@ function AddProduct(props) {
           price,
           amount,
           imageAsBase64,
-          category.productCategoryID
-        //   peopleCategories
+          category.productCategoryID,
+          peopleCategories
         )
           .then((response) => {
             navigate("/category/" + category.productCategoryID);
@@ -43,28 +43,28 @@ function AddProduct(props) {
       .catch(console.error);
   };
 
-//   const preparePeopleCategories = () => {
-//     let selectArray = [];
+  const preparePeopleCategories = () => {
+    let selectArray = [];
 
-//     props.peopleCategories.forEach((peopleCategory) => {
-//       selectArray.push({
-//         value: peopleCategory.peopleCategoryID,
-//         label: peopleCategory.name,
-//       });
-//     });
+    props.peopleCategories.forEach((peopleCategory) => {
+      selectArray.push({
+        value: peopleCategory.peopleCategoryID,
+        label: peopleCategory.name,
+      });
+    });
 
-//     return selectArray;
-//   };
+    return selectArray;
+  };
 
-//   const changePeopleCategories = (e) => {
-//     let tmpPeopleCategories = [];
+  const changePeopleCategories = (e) => {
+    let tmpPeopleCategories = [];
 
-//     e.forEach((peopleCategory) => {
-//       tmpPeopleCategories.push(peopleCategory.value);
-//     });
+    e.forEach((peopleCategory) => {
+      tmpPeopleCategories.push(peopleCategory.value);
+    });
 
-//     setPeopleCategories(tmpPeopleCategories);
-//   };
+    setPeopleCategories(tmpPeopleCategories);
+  };
 
   return (
     <div>
@@ -120,7 +120,7 @@ function AddProduct(props) {
               required
             />
           </div>
-          {/* <div className="my-3">
+          <div className="my-3">
             <label>Za muškarce/žene/decu</label>
             {props.peopleCategories && (
               <Select
@@ -129,7 +129,7 @@ function AddProduct(props) {
                 onChange={changePeopleCategories}
               />
             )}
-          </div> */}
+          </div>
           <div className="nav-item dropdown">
             <a
               className="nav-link dropdown-toggle"

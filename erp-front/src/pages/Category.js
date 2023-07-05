@@ -9,24 +9,24 @@ import PeopleCategoryService from '../services/PeopleCategoryService';
 function Category(props) {
   const [products, setProducts] = useState([]);
   const [productCategories, setProductCategories] = useState([]);
-  // const [peopleCategories, setPeopleCategories] = useState([]);
+  const [peopleCategories, setPeopleCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState('');
   const { categoryId } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [productsData, categoryData, productCategoriesData] = await Promise.all([
+        const [productsData, categoryData, productCategoriesData, peopleCategoriesData] = await Promise.all([
           ProductService.getProductByCategory(categoryId),
           ProductCategoryService.getCategoryById(categoryId),
           ProductCategoryService.getCategores(),
-          // PeopleCategoryService.getPeople()
+          PeopleCategoryService.getPeople()
         ]);
 
         setProducts(productsData);
         setCurrentCategory(categoryData.name);
         setProductCategories(productCategoriesData);
-        // setPeopleCategories(peopleCategoriesData);
+        setPeopleCategories(peopleCategoriesData);
       } catch (error) {
         console.error(error);
       }
@@ -35,20 +35,20 @@ function Category(props) {
     fetchData();
   }, [categoryId]);
 
-  // const filterProductsByPeople = (peopleId) => {
-  //   if (products.length === 0) {
-  //     return; // No products to filter
-  //   }
+  const filterProductsByPeople = (peopleId) => {
+    if (products.length === 0) {
+      return; // No products to filter
+    }
   
-  //   const filteredProducts = products.filter(product => {
-  //     return (
-  //       product.peopleCategories &&
-  //       product.peopleCategories.some(peopleCategory => peopleCategory.peopleCategoryID === peopleId)
-  //     );
-  //   });
+    const filteredProducts = products.filter(product => {
+      return (
+        product.peopleCategories &&
+        product.peopleCategories.some(peopleCategory => peopleCategory.peopleCategoryID === peopleId)
+      );
+    });
   
-  //   setProducts(filteredProducts);
-  // };
+    setProducts(filteredProducts);
+  };
   
   return (
     <div>
@@ -57,7 +57,7 @@ function Category(props) {
       <div className="container-fluid">
         <div className="row">
           <div className="position-sticky col-12 col-lg-2 py-5">
-            {/* <div className="list-group">
+            <div className="list-group">
               {peopleCategories.map(peopleCategory => (
                 <a
                   key={"peopleFilter" + peopleCategory.peopleCategoryID}
@@ -67,7 +67,7 @@ function Category(props) {
                   {peopleCategory.name}
                 </a>
               ))}
-            </div> */}
+            </div>
           </div>
 
           <div className="col-12 col-lg-10">
@@ -75,7 +75,7 @@ function Category(props) {
               addToCart={props.addToCart}
               products={products}
               productCategories={productCategories}
-              // peopleCategories={peopleCategories}
+              peopleCategories={peopleCategories}
             />
           </div>
         </div>

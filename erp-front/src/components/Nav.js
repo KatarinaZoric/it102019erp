@@ -85,14 +85,14 @@ function Nav({numberOfCartItems, cartTotalAmount}) {
                             })}
                         </ul>
                     </li>
-                    {/* <li className="nav-item dropdown">
+                    <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Za</a>
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             {peopleCategories.map(category => {
                                 return <li><a className="dropdown-item" key={"peopleCat" + category.peopleCategoryID} >{category.name}</a></li>
                             })}
                         </ul>
-                    </li> */}
+                    </li>
                 </ul>        
                     {loginRegister()}
             </div>
