@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ErpPopravni.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -75,7 +75,7 @@ namespace ErpPopravni.Migrations
                         column: x => x.ProductCategoryID,
                         principalTable: "ProductCategories",
                         principalColumn: "ProductCategoryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -96,7 +96,7 @@ namespace ErpPopravni.Migrations
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,31 +116,31 @@ namespace ErpPopravni.Migrations
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
                 name: "PeopleCategoryProduct",
                 columns: table => new
                 {
-                    CategoriesPeopleCategoryID = table.Column<int>(type: "int", nullable: false),
+                    PeopleCategoriesPeopleCategoryID = table.Column<int>(type: "int", nullable: false),
                     ProductsProductID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PeopleCategoryProduct", x => new { x.CategoriesPeopleCategoryID, x.ProductsProductID });
+                    table.PrimaryKey("PK_PeopleCategoryProduct", x => new { x.PeopleCategoriesPeopleCategoryID, x.ProductsProductID });
                     table.ForeignKey(
-                        name: "FK_PeopleCategoryProduct_PeopleCategories_CategoriesPeopleCategoryID",
-                        column: x => x.CategoriesPeopleCategoryID,
+                        name: "FK_PeopleCategoryProduct_PeopleCategories_PeopleCategoriesPeopleCategoryID",
+                        column: x => x.PeopleCategoriesPeopleCategoryID,
                         principalTable: "PeopleCategories",
                         principalColumn: "PeopleCategoryID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_PeopleCategoryProduct_Products_ProductsProductID",
                         column: x => x.ProductsProductID,
                         principalTable: "Products",
                         principalColumn: "ProductID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -163,13 +163,13 @@ namespace ErpPopravni.Migrations
                         column: x => x.ProductID,
                         principalTable: "Products",
                         principalColumn: "ProductID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Reviews_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -191,13 +191,13 @@ namespace ErpPopravni.Migrations
                         column: x => x.OrderID,
                         principalTable: "Orders",
                         principalColumn: "OrderID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_OrderItems_Products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "Products",
                         principalColumn: "ProductID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -219,13 +219,13 @@ namespace ErpPopravni.Migrations
                         column: x => x.QuestionID,
                         principalTable: "Questions",
                         principalColumn: "QuestionID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Messages_Users_UserID",
                         column: x => x.UserID,
                         principalTable: "Users",
                         principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(

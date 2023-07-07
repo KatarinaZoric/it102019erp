@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ErpPopravni.Migrations
 {
     [DbContext(typeof(ButikContext))]
-    [Migration("20230704195447_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230705225302_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -266,13 +266,13 @@ namespace ErpPopravni.Migrations
 
             modelBuilder.Entity("PeopleCategoryProduct", b =>
                 {
-                    b.Property<int>("CategoriesPeopleCategoryID")
+                    b.Property<int>("PeopleCategoriesPeopleCategoryID")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductsProductID")
                         .HasColumnType("int");
 
-                    b.HasKey("CategoriesPeopleCategoryID", "ProductsProductID");
+                    b.HasKey("PeopleCategoriesPeopleCategoryID", "ProductsProductID");
 
                     b.HasIndex("ProductsProductID");
 
@@ -373,7 +373,7 @@ namespace ErpPopravni.Migrations
                 {
                     b.HasOne("ErpPopravni.Models.PeopleCategory", null)
                         .WithMany()
-                        .HasForeignKey("CategoriesPeopleCategoryID")
+                        .HasForeignKey("PeopleCategoriesPeopleCategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

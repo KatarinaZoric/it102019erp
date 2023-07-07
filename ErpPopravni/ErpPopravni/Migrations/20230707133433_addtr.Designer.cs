@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ErpPopravni.Migrations
 {
     [DbContext(typeof(ButikContext))]
-    [Migration("20230705160407_MigrationsUpdate")]
-    partial class MigrationsUpdate
+    [Migration("20230707133433_addtr")]
+    partial class addtr
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

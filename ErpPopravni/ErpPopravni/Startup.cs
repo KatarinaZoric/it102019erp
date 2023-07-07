@@ -14,6 +14,8 @@ using ErpPopravni.Controllers.Middleware;
 using ErpPopravni.Services;
 using System.Linq;
 using System.Text;
+using Stripe;
+using ErpPopravni.Models;
 
 namespace ErpPopravni
 {
@@ -34,6 +36,7 @@ namespace ErpPopravni
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IOrderService, OrderService>();
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
 
             services.AddCors(options =>
             {
@@ -114,6 +117,10 @@ namespace ErpPopravni
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            var stripeSettings = Configuration.GetSection("Stripe").Get<StripeSettings>();
+            StripeConfiguration.ApiKey = stripeSettings.SecretKey;
+
 
             app.UseMiddleware<IdentityMiddleware>();
 

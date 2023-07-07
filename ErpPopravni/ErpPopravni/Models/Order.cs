@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace ErpPopravni.Models
 {
+    
+
     public class Order
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]

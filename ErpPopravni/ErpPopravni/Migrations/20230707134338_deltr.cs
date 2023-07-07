@@ -5,7 +5,7 @@
 namespace ErpPopravni.Migrations
 {
     /// <inheritdoc />
-    public partial class MigrationsUpdate : Migration
+    public partial class deltr : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
